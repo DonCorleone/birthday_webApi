@@ -26,6 +26,10 @@ namespace docker_webapi.Controllers
                 {new Birthday(){ Name="Leyla", DateOfBirth=new DateTime(2014,1,27)}},
                 {new Birthday(){ Name="Natalie", DateOfBirth=new DateTime(1980,1,25)}},
                 {new Birthday(){ Name="Linus", DateOfBirth=new DateTime(1977,9,6)}},
+                {new Birthday(){ Name="Nani", DateOfBirth=new DateTime(1953,12,28)}},
+                {new Birthday(){ Name="Neni", DateOfBirth=new DateTime(1952,1,7)}},
+                {new Birthday(){ Name="Hannah", DateOfBirth=new DateTime(2014,5,11)}},
+                {new Birthday(){ Name="Dean", DateOfBirth=new DateTime(1984,11,14)}},
             };
         }
     }

@@ -11,5 +11,19 @@ namespace docker_webapi
         public string WeekdayOfBirth => DateOfBirth.DayOfWeek.ToString();
 
         public string Name { get; set; }
+
+
+        public long DaysTillBirthday { 
+            get {
+
+                DateTime annualBirthday = new DateTime(DateTime.Today.Year, DateOfBirth.Month, DateOfBirth.Day);
+                // Birthday next year?
+                if (annualBirthday.Ticks < DateTime.Today.Ticks){
+                    annualBirthday = annualBirthday.AddYears(1);
+                }
+                
+                return (annualBirthday.Ticks - DateTime.Today.Ticks) / TimeSpan.TicksPerDay;
+            }
+        }
     }
 }
