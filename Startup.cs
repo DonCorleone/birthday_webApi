@@ -15,7 +15,9 @@ namespace docker_webapi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+            public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -25,7 +27,16 @@ namespace docker_webapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins(
+                            "http://127.0.0.1:4200",
+                            "http://localhost:4200");
+                    });
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -44,6 +55,8 @@ namespace docker_webapi
             }
 
             app.UseRouting();
+        
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 
